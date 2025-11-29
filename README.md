@@ -25,7 +25,7 @@ A personalized newsletter generator that pulls recent papers from arXiv based on
 
 1. Clone or download this repository:
 ```bash
-cd /Users/skhullar/Docs/Projects/personal_arXiv_newsletter
+cd PATH_TO_DIRECTORY/personal_arXiv_newsletter
 ```
 
 2. Install the package:
