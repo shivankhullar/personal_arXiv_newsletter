@@ -1,0 +1,99 @@
+# arXiv Newsletter Configuration
+# Copy this file to config.yaml and customize it with your preferences
+
+# Authors to follow (use their arXiv author identifiers or names)
+authors:
+  - "John Smith"
+  - "Jane Doe"
+  - "Albert Einstein"
+
+# Categories to search in (arXiv category codes)
+# See: https://arxiv.org/category_taxonomy
+categories:
+  - "astro-ph.CO"  # Cosmology and Nongalactic Astrophysics
+  - "astro-ph.GA"  # Astrophysics of Galaxies
+  - "astro-ph.HE"  # High Energy Astrophysical Phenomena
+  - "gr-qc"        # General Relativity and Quantum Cosmology
+
+# Keywords to search for in titles and abstracts
+keywords:
+  - "dark matter"
+  - "galaxy formation"
+  - "gravitational waves"
+
+# How many days back to search for papers (default: 7)
+days_back: 7
+
+# Maximum number of papers to include in the newsletter
+max_papers: 20
+
+# Minimum similarity score (0-1) for papers to be included
+# Higher values = more selective
+min_similarity_score: 0.3
+
+# Paper selection mode: 'threshold' or 'fill'
+# 'threshold': Stop when papers fall below min_similarity_score (respects quality)
+# 'fill': Include papers until max_papers reached (ignores threshold after author matches)
+selection_mode: "threshold"
+
+# Output settings
+output:
+  # Directory to save newsletters
+  directory: "newsletters"
+  
+  # Filename pattern (supports {date} placeholder)
+  filename: "arxiv_newsletter_{date}.pdf"
+  
+  # Include abstracts in the newsletter
+  include_abstracts: true
+  
+  # Include full abstracts (no truncation)
+  full_abstracts: false
+  
+  # Include paper links
+  include_links: true
+  
+  # Include ADS (Astrophysics Data System) links when available
+  include_ads_links: true
+  
+  # Group papers by category
+  group_by_category: true
+  
+  # Use LaTeX for PDF generation (requires pdflatex)
+  # Provides proper math typesetting and academic appearance
+  # Set to false to use ReportLab (no LaTeX installation required)
+  latex_style: false
+
+# Advanced settings
+advanced:
+  # Use semantic similarity based on paper content
+  # Requires computing embeddings (slower but more accurate)
+  use_semantic_similarity: true
+  
+  # Number of reference papers to use for similarity calculation
+  # (papers from followed authors)
+  reference_papers_limit: 50
+  
+  # Weight for author match vs. content similarity
+  # 1.0 = only author match, 0.0 = only content similarity
+  author_weight: 0.6
+
+# Exclusion criteria - papers matching these will be filtered out
+exclusions:
+  # Maximum number of authors (set to 0 to disable)
+  max_authors: 0  # e.g., 1000 to exclude large collaborations
+  
+  # Minimum number of authors (set to 0 to disable)
+  min_authors: 0  # e.g., 2 to exclude single-author papers
+  
+  # Keywords to exclude (papers with these in title/abstract will be removed)
+  exclude_keywords: []
+    # - "review"
+    # - "proceedings"
+    # - "conference"
+  
+  # Categories to exclude (papers with these categories will be removed)
+  # Use prefix matching: "cs." will exclude all computer science categories
+  exclude_categories: []
+    # - "cs."  # Exclude all computer science papers
+    # - "math."  # Exclude all mathematics papers
