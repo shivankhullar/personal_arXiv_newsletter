@@ -242,7 +242,7 @@ Add to your crontab (`crontab -e`):
 ### Create a shell script
 ```bash
 #!/bin/bash
-cd /Users/skhullar/Docs/Projects/personal_arXiv_newsletter
+cd PATH_TO_DIRECTORY/personal_arXiv_newsletter
 source venv/bin/activate  # if using virtual environment
 arxiv-newsletter
 ```
